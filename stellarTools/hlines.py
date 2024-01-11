@@ -38,7 +38,7 @@ def getLines(series,nlines,z=0):
             if j<5:
                 l=series_letter[j]
             else:
-                l=j+1
+                l=n1#j+1
 
 
             name="{0}$_{{{1}}}$".format(sname,l)

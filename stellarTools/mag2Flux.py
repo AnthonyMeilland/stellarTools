@@ -53,15 +53,16 @@ def mag2Flux(mag,band,unit,struct=True,typ="Johnson",zeropoint=None,wl=None):
 
     if unit=='W/m2/Hz':
         F=F*1e-26
-    if unit=='W/m2/m':
+    elif unit=='W/m2/m':
         F=F*1e-26*c/wl**2
-    if unit=='W/m2/micron':
+    elif unit=='W/m2/micron':
         F=F*1e-26*c/wl**2/1e6
-    if unit=='W/cm2/micron':
+    elif unit=='W/cm2/micron':
         F=F*1e-26*c/wl**2/1e6/1e4
-
+    elif unit!="Jy":
+        return None
 
     if struct:
         return {"wl":wl,"f":F}
     else:
-        return f
+        return F

@@ -18,8 +18,8 @@ def blackBody(lam,T):
      #result in W/m^3/sr
 
     c=2.997e8
-    h=6.2606896e-34
-    k=1.3806504e-23
+    h=6.62607e-34
+    k=1.38065e-23
 
     B_lam=2*h*c**2./(lam**5.*(np.exp(h*c/(lam*k*T))-1.))
 
@@ -29,7 +29,7 @@ def blackBodyStar(lam,T,Reto,dist):
      #lam in m;
      #Reto in Ro;
      #dist in pc
-     #result en W/m^
+     #result en W/m^3
 
     Ro=7e8
     parsec=3.08e16
@@ -37,7 +37,7 @@ def blackBodyStar(lam,T,Reto,dist):
     R=Reto*Ro
     d=dist*parsec
 
-    print(np.pi*(R/d)**2.)
+
     F_lam=np.pi*(R/d)**2.*blackBody(lam,T)
     return F_lam
 
@@ -47,6 +47,5 @@ def blackBodyStarAngular(lam,T,diam):
      #result en W/m^3
 
     S=np.pi*(diam/2*mas2rad)**2
-    print(S)
     F_lam=S*blackBody(lam,T)
     return F_lam
