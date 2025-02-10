@@ -6,7 +6,6 @@ Created on Sat Mar 24 15:50:57 2018
 """
 import numpy as np
 from scipy.interpolate import interp1d
-import numpy as np
 import os
 
 path = os.path.abspath(__file__)
@@ -26,7 +25,7 @@ class vonZeipel:
         d2=d.split()
         d3=np.array(d2)
         d4=np.reshape(d3,[1000,3])
-        d4=d4.astype(np.float)
+        d4=d4.astype(float)
         self._tab_v=d4[:,2]
         self._tab_omega=d4[:,0]
         self._tab_flattening=d4[:,1]
