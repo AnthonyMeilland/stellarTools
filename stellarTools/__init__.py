@@ -21,3 +21,4 @@ from .fluxConverter import fluxConverter
 from .reto2mas import reto2mas
 from .mas2reto import mas2reto
 from . import reddening 
+from stellarTools.lightColor import lightColor,lightColorMap
