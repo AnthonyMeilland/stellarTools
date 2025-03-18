@@ -133,11 +133,50 @@ class evolutionaryTrack:
         self.teff=10**self.data["lg(Teff)"]
         self.lum=10**self.data["lg(L)"] 
         self.radius=self.lum**0.5*(5778/self.teff)**2
-       
+        self.age = self.data["time"]
         
         
+    
         
+class fullGrid:
+    def __init__(self):
+        self.zam = zeroAgeMainSequence()
+    
+        self.mass = self.zam.Mass
+        self.tracks = []
+        self.teff = []
+        self.lum = []
+        self.radius = []
+        self.age = []
+        self.loglum = []
+        self.logteff = []
         
+        for i,massi in enumerate(self.mass):
+                tracki =evolutionaryTrack(massi)
+                self.tracks.append(tracki)
+                self.teff.append(tracki.teff)
+                self.lum.append(tracki.lum)        
+                self.radius.append(tracki.radius)    
+                self.age.append(tracki.age)
+                self.loglum.append(tracki.data["lg(L)"])
+                self.logteff.append(tracki.data["lg(Teff)"])
+        self.teff = np.array(self.teff)
+        self.lum = np.array(self.lum)
+        self.radius = np.array(self.radius)
+        self.age = np.array(self.age)
+        self.logteff = np.array(self.logteff)
+        self.loglum = np.array(self.loglum)
+        
+    def getMainSequenceMass(self,Teff,Lum):
+        logteff = self.logteff[:,:85].flatten()
+        loglum  = self.loglum[:,:85].flatten()
+        mass = (self.mass[:,np.newaxis]*np.ones(85)).flatten()
+        
+
+        interp = interpolate.LinearNDInterpolator(list(zip(logteff, loglum)), mass)
+        
+        return interp(np.log10(Teff),np.log10(Lum))
+                
 class zeroAgeMainSequence:
     
     def __init__(self,mass=None,lum=None,radius=None,teff=None,ageIdx=0):
