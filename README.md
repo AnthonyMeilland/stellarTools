@@ -44,7 +44,7 @@ Simple function to perform conversion between milli-arcseconds and stellar (or s
 
 ## mist
 
-Simple class to plot interpolated MIST (MESA Isochrones & Stellar Tracks) models.
+Simple class to compute interpolated MIST (MESA Isochrones & Stellar Tracks) models.
 
 ## reddening
 
