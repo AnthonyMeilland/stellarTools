@@ -9,6 +9,7 @@ __all__ = ['kurucz','reddening','freefree','vonZeipel','flux','udisk','hlines'
            ,'blackbody','mag2Flux','fluxConverter','reto2mas','mas2reto',
            'geneva','lightColor']
 
+from . import mist
 from . import geneva
 from .typicalStar import typicalStar
 from .vonZeipel import vonZeipel
@@ -25,3 +26,4 @@ from .mas2reto import mas2reto
 from . import reddening 
 from .lightColor import lightColor,lightColorMap
 from . import binary
+from .colortemperature import temperatureColor,temperatureColorFake
